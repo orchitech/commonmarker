@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.summary = 'CommonMark parser and renderer. Written in C, wrapped in Ruby.'
   s.description = 'A fast, safe, extensible parser for CommonMark. This wraps the official libcmark library.'
   s.authors = ['Garen Torikian', 'Ashe Connor']
-  s.homepage = 'https://github.com/gjtorikian/commonmarker'
+  s.homepage = 'https://github.com/orchitech/commonmarker'
   s.license = 'MIT'
 
   s.files         = %w[LICENSE.txt README.md Rakefile commonmarker.gemspec bin/commonmarker]
