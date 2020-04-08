@@ -4,7 +4,7 @@ require 'test_helper'
 require 'minitest/benchmark' if ENV['BENCH']
 
 def markdown(str)
-  CommonMarkerSourceposFix.render_doc(str).to_html
+  CommonMarkerFixedSourcepos.render_doc(str).to_html
 end
 
 # list of pairs consisting of input and a regex that must match the output.

@@ -4,16 +4,16 @@ require 'test_helper'
 
 class TestDocNode < Minitest::Test
   def setup
-    @doc = CommonMarkerSourceposFix.render_doc('Hi *there*. This has __many nodes__!')
+    @doc = CommonMarkerFixedSourcepos.render_doc('Hi *there*. This has __many nodes__!')
     @first_child = @doc.first_child
     @last_child = @doc.last_child
-    @link = CommonMarkerSourceposFix.render_doc('[GitHub](https://www.github.com)').first_child.first_child
-    @image = CommonMarkerSourceposFix.render_doc('![alt text](https://github.com/favicon.ico "Favicon")')
+    @link = CommonMarkerFixedSourcepos.render_doc('[GitHub](https://www.github.com)').first_child.first_child
+    @image = CommonMarkerFixedSourcepos.render_doc('![alt text](https://github.com/favicon.ico "Favicon")')
     @image = @image.first_child.first_child
-    @header = CommonMarkerSourceposFix.render_doc('### Header Three').first_child
-    @ul_list = CommonMarkerSourceposFix.render_doc("* Bullet\n*Bullet").first_child
-    @ol_list = CommonMarkerSourceposFix.render_doc("1. One\n2. Two").first_child
-    @fence = CommonMarkerSourceposFix.render_doc("``` ruby\nputs 'wow'\n```").first_child
+    @header = CommonMarkerFixedSourcepos.render_doc('### Header Three').first_child
+    @ul_list = CommonMarkerFixedSourcepos.render_doc("* Bullet\n*Bullet").first_child
+    @ol_list = CommonMarkerFixedSourcepos.render_doc("1. One\n2. Two").first_child
+    @fence = CommonMarkerFixedSourcepos.render_doc("``` ruby\nputs 'wow'\n```").first_child
   end
 
   def test_get_type

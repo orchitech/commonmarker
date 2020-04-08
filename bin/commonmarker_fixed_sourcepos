@@ -5,16 +5,16 @@ require 'optparse'
 require 'ostruct'
 
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
-require 'commonmarker-sourcepos-fix'
+require 'commonmarker_fixed_sourcepos'
 
 root = File.expand_path('..', __dir__)
 $LOAD_PATH.unshift File.expand_path('lib', root)
 
 def parse_options
   options = OpenStruct.new
-  extensions = CommonMarkerSourceposFix.extensions
-  parse_options = CommonMarkerSourceposFix::Config::Parse
-  render_options = CommonMarkerSourceposFix::Config::Render
+  extensions = CommonMarkerFixedSourcepos.extensions
+  parse_options = CommonMarkerFixedSourcepos::Config::Parse
+  render_options = CommonMarkerFixedSourcepos::Config::Render
 
   options.active_extensions = []
   options.active_parse_options = [:DEFAULT]
@@ -76,7 +76,7 @@ def parse_options
     end
 
     opts.on('-v', '--version', 'Version information') do
-      puts "commonmarker #{CommonMarkerSourceposFix::VERSION}"
+      puts "commonmarker #{CommonMarkerFixedSourcepos::VERSION}"
       exit
     end
   end
@@ -88,10 +88,10 @@ end
 
 options = parse_options
 
-doc = CommonMarkerSourceposFix.render_doc(ARGF.read, options.active_parse_options, options.active_extensions)
+doc = CommonMarkerFixedSourcepos.render_doc(ARGF.read, options.active_parse_options, options.active_extensions)
 
 if options.renderer
-  renderer = CommonMarkerSourceposFix::HtmlRenderer.new(extensions: options.active_extensions)
+  renderer = CommonMarkerFixedSourcepos::HtmlRenderer.new(extensions: options.active_extensions)
   STDOUT.write(renderer.render(doc))
 else
   STDOUT.write(doc.to_html(options.active_render_options, options.active_extensions))

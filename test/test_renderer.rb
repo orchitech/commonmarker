@@ -4,7 +4,7 @@ require 'test_helper'
 
 class TestRenderer < Minitest::Test
   def setup
-    @doc = CommonMarkerSourceposFix.render_doc('Hi *there*')
+    @doc = CommonMarkerFixedSourcepos.render_doc('Hi *there*')
   end
 
   def test_html_renderer
@@ -23,8 +23,8 @@ class TestRenderer < Minitest::Test
       | :------: | ---: | :------ |
       | Foo      | Bar  | Baz     |
     DOC
-    doc = CommonMarkerSourceposFix.render_doc(content, :DEFAULT, %i[autolink table tagfilter])
-    results = CommonMarkerSourceposFix::HtmlRenderer.new.render(doc)
+    doc = CommonMarkerFixedSourcepos.render_doc(content, :DEFAULT, %i[autolink table tagfilter])
+    results = CommonMarkerFixedSourcepos::HtmlRenderer.new.render(doc)
     assert_equal 2, results.scan(/<tbody>/).size
   end
 end

@@ -2,27 +2,27 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'commonmarker-sourcepos-fix/version'
+require 'commonmarker_fixed_sourcepos/version'
 
 Gem::Specification.new do |s|
-  s.name = 'commonmarker-sourcepos-fix'
-  s.version = CommonMarkerSourceposFix::VERSION
+  s.name = 'commonmarker_fixed_sourcepos'
+  s.version = CommonMarkerFixedSourcepos::VERSION
   s.summary = 'CommonMark parser and renderer. Written in C, wrapped in Ruby.'
   s.description = 'A fast, safe, extensible parser for CommonMark. This wraps the cmark-gfm library and adds sourcepos fixes.'
   s.authors = ['Garen Torikian', 'Ashe Connor']
   s.homepage = 'https://github.com/orchitech/commonmarker/tree/fix-source-positions-for-inlines'
   s.license = 'MIT'
 
-  s.files         = %w[LICENSE.txt README.md Rakefile commonmarker.gemspec bin/commonmarker]
+  s.files         = %w[LICENSE.txt README.md Rakefile commonmarker.gemspec bin/commonmarker_fixed_sourcepos]
   s.files        += Dir.glob('lib/**/*.rb')
-  s.files        += Dir.glob('ext/commonmarker/*.*')
+  s.files        += Dir.glob('ext/commonmarker_fixed_sourcepos/*.*')
   s.test_files    = Dir.glob('test/**/*').reject { |f| f == 'test/benchinput.md' || f.start_with?('test/progit/') }
-  s.extensions    = ['ext/commonmarker/extconf.rb']
+  s.extensions    = ['ext/commonmarker_fixed_sourcepos/extconf.rb']
 
-  s.executables = ['commonmarker']
+  s.executables = ['commonmarker_fixed_sourcepos']
   s.require_paths = %w[lib ext]
 
-  s.rdoc_options += ['-x', 'ext/commonmarker/cmark/.*']
+  s.rdoc_options += ['-x', 'ext/commonmarker_fixed_sourcepos/cmark/.*']
 
   s.add_dependency 'ruby-enum', '~> 0.5'
 

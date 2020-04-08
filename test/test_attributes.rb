@@ -5,7 +5,7 @@ require 'test_helper'
 class TestAttributes < Minitest::Test
   def setup
     contents = fixtures_file('dingus.md')
-    @doc = CommonMarkerSourceposFix.render_doc(contents.strip)
+    @doc = CommonMarkerFixedSourcepos.render_doc(contents.strip)
   end
 
   def test_sourcepos

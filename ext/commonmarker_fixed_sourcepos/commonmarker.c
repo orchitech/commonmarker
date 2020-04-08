@@ -1172,7 +1172,7 @@ VALUE rb_extensions(VALUE self) {
   return ary;
 }
 
-__attribute__((visibility("default"))) void Init_commonmarker() {
+__attribute__((visibility("default"))) void Init_commonmarker_fixed_sourcepos() {
   VALUE module;
   sym_document = ID2SYM(rb_intern("document"));
   sym_blockquote = ID2SYM(rb_intern("blockquote"));
@@ -1202,7 +1202,7 @@ __attribute__((visibility("default"))) void Init_commonmarker() {
   sym_right = ID2SYM(rb_intern("right"));
   sym_center = ID2SYM(rb_intern("center"));
 
-  module = rb_define_module("CommonMarkerSourceposFix");
+  module = rb_define_module("CommonMarkerFixedSourcepos");
   rb_define_singleton_method(module, "extensions", rb_extensions, 0);
   rb_eNodeError = rb_define_class_under(module, "NodeError", rb_eStandardError);
   rb_cNode = rb_define_class_under(module, "Node", rb_cObject);

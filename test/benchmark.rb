@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'commonmarker-sourcepos-fix'
+require 'commonmarker_fixed_sourcepos'
 require 'github/markdown'
 require 'redcarpet'
 require 'kramdown'
@@ -24,11 +24,11 @@ dobench('github-markdown') do
 end
 
 dobench('commonmarker with to_html') do
-  CommonMarkerSourceposFix.render_html(benchinput)
+  CommonMarkerFixedSourcepos.render_html(benchinput)
 end
 
 dobench('commonmarker with ruby HtmlRenderer') do
-  CommonMarkerSourceposFix::HtmlRenderer.new.render(CommonMarkerSourceposFix.render_doc(benchinput))
+  CommonMarkerFixedSourcepos::HtmlRenderer.new.render(CommonMarkerFixedSourcepos.render_doc(benchinput))
 end
 
 dobench('kramdown') do

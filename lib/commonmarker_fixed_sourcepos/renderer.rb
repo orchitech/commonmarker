@@ -3,7 +3,7 @@
 require 'set'
 require 'stringio'
 
-module CommonMarkerSourceposFix
+module CommonMarkerFixedSourcepos
   class Renderer
     attr_accessor :in_tight, :warnings, :in_plain
     def initialize(options: :DEFAULT, extensions: [])
@@ -127,7 +127,7 @@ module CommonMarkerSourceposFix
     end
 
     def option_enabled?(opt)
-      (@opts & CommonMarkerSourceposFix::Config::Render.value(opt)) != 0
+      (@opts & CommonMarkerFixedSourcepos::Config::Render.value(opt)) != 0
     end
   end
 end

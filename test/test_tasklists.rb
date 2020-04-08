@@ -8,7 +8,7 @@ class TestTasklists < Minitest::Test
  - [x] Add task list
  - [ ] Define task list
     MD
-    @doc = CommonMarkerSourceposFix.render_doc(text, :DEFAULT, %i[tasklist])
+    @doc = CommonMarkerFixedSourcepos.render_doc(text, :DEFAULT, %i[tasklist])
     @expected = <<~HTML
       <ul>
       <li><input type="checkbox" checked="" disabled="" /> Add task list</li>
@@ -22,7 +22,7 @@ class TestTasklists < Minitest::Test
   end
 
   def test_html_renderer
-    assert_equal @expected, CommonMarkerSourceposFix::HtmlRenderer.new.render(@doc)
+    assert_equal @expected, CommonMarkerFixedSourcepos::HtmlRenderer.new.render(@doc)
   end
 
   def test_tasklist_state

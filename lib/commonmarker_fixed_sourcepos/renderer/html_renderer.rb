@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module CommonMarkerSourceposFix
+module CommonMarkerFixedSourcepos
   class HtmlRenderer < Renderer
     def document(_)
       super

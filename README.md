@@ -1,4 +1,4 @@
-# CommonMarkerSourceposFix
+# CommonMarkerFixedSourcepos
 
 [![Build Status](https://travis-ci.org/gjtorikian/commonmarker.svg)](https://travis-ci.org/gjtorikian/commonmarker) [![Gem Version](https://badge.fury.io/rb/commonmarker.svg)](http://badge.fury.io/rb/commonmarker)
 
@@ -11,7 +11,7 @@ For more information on available extensions, see [the documentation below](#ext
 
 Add this line to your application's Gemfile:
 
-    gem 'commonmarker-sourcepos-fix'
+    gem 'commonmarker_fixed_sourcepos'
 
 And then execute:
 
@@ -19,7 +19,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install commonmarker-sourcepos-fix
+    $ gem install commonmarker_fixed_sourcepos
 
 ## Usage
 
@@ -28,8 +28,8 @@ Or install it yourself as:
 Call `render_html` on a string to convert it to HTML:
 
 ``` ruby
-require 'commonmarker-sourcepos-fix'
-CommonMarkerSourceposFix.render_html('Hi *there*', :DEFAULT)
+require 'commonmarker_fixed_sourcepos'
+CommonMarkerFixedSourcepos.render_html('Hi *there*', :DEFAULT)
 # <p>Hi <em>there</em></p>\n
 ```
 
@@ -40,9 +40,9 @@ The second argument is optional--[see below](#options) for more information.
 You can also parse a string to receive a `Document` node. You can then print that node to HTML, iterate over the children, and other fun node stuff. For example:
 
 ``` ruby
-require 'commonmarker-sourcepos-fix'
+require 'commonmarker_fixed_sourcepos'
 
-doc = CommonMarkerSourceposFix.render_doc('*Hello* world', :DEFAULT)
+doc = CommonMarkerFixedSourcepos.render_doc('*Hello* world', :DEFAULT)
 puts(doc.to_html) # <p>Hi <em>there</em></p>\n
 
 doc.walk do |node|
@@ -60,10 +60,10 @@ You can use `walk` or `each` to iterate over nodes:
 - `each` will iterate on a node and its children, but no further.
 
 ``` ruby
-require 'commonmarker-sourcepos-fix'
+require 'commonmarker_fixed_sourcepos'
 
 # parse the files specified on the command line
-doc = CommonMarkerSourceposFix.render_doc("# The site\n\n [GitHub](https://www.github.com)")
+doc = CommonMarkerFixedSourcepos.render_doc("# The site\n\n [GitHub](https://www.github.com)")
 
 # Walk tree and print out URLs for links
 doc.walk do |node|
@@ -94,10 +94,10 @@ end
 
 ### Creating a custom renderer
 
-You can also derive a class from CommonMarkerSourceposFix's `HtmlRenderer` class. This produces slower output, but is far more customizable. For example:
+You can also derive a class from CommonMarkerFixedSourcepos's `HtmlRenderer` class. This produces slower output, but is far more customizable. For example:
 
 ``` ruby
-class MyHtmlRenderer < CommonMarkerSourceposFix::HtmlRenderer
+class MyHtmlRenderer < CommonMarkerFixedSourcepos::HtmlRenderer
   def initialize
     super
     @headerid = 1
@@ -123,7 +123,7 @@ end
 
 ## Options
 
-CommonMarkerSourceposFix accepts the same options that CMark does, as symbols. Note that there is a distinction in CMark for "parse" options and "render" options, which are represented in the tables below.
+CommonMarkerFixedSourcepos accepts the same options that CMark does, as symbols. Note that there is a distinction in CMark for "parse" options and "render" options, which are represented in the tables below.
 
 ### Parse options
 
@@ -155,14 +155,14 @@ CommonMarkerSourceposFix accepts the same options that CMark does, as symbols. N
 To apply a single option, pass it in as a symbol argument:
 
 ``` ruby
-CommonMarkerSourceposFix.render_doc("\"Hello,\" said the spider.", :SMART)
+CommonMarkerFixedSourcepos.render_doc("\"Hello,\" said the spider.", :SMART)
 # <p>“Hello,” said the spider.</p>\n
 ```
 
 To have multiple options applied, pass in an array of symbols:
 
 ``` ruby
-CommonMarkerSourceposFix.render_html("\"'Shelob' is my name.\"", [:HARDBREAKS, :SOURCEPOS])
+CommonMarkerFixedSourcepos.render_html("\"'Shelob' is my name.\"", [:HARDBREAKS, :SOURCEPOS])
 ```
 
 For more information on these options, see [the CMark documentation](https://git.io/v7nh1).

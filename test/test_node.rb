@@ -4,7 +4,7 @@ require 'test_helper'
 
 class TestNode < Minitest::Test
   def setup
-    @doc = CommonMarkerSourceposFix.render_doc('Hi *there*, I am mostly text!')
+    @doc = CommonMarkerFixedSourcepos.render_doc('Hi *there*, I am mostly text!')
   end
 
   def test_walk
@@ -36,7 +36,7 @@ class TestNode < Minitest::Test
 
   def test_select
     nodes = @doc.first_child.select { |node| node.type == :text }
-    assert_equal CommonMarkerSourceposFix::Node, nodes.first.class
+    assert_equal CommonMarkerFixedSourcepos::Node, nodes.first.class
     assert_equal %i[text text], nodes.map(&:type)
   end
 
@@ -80,10 +80,10 @@ class TestNode < Minitest::Test
   end
 
   def test_inspect
-    assert_match(/#<CommonMarkerSourceposFix::Node\(document\):/, @doc.inspect)
+    assert_match(/#<CommonMarkerFixedSourcepos::Node\(document\):/, @doc.inspect)
   end
 
   def test_pretty_print
-    assert_match(/#<CommonMarkerSourceposFix::Node\(document\):/, PP.pp(@doc, +''))
+    assert_match(/#<CommonMarkerFixedSourcepos::Node\(document\):/, PP.pp(@doc, +''))
   end
 end

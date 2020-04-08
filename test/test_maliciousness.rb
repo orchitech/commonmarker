@@ -2,10 +2,10 @@
 
 require 'test_helper'
 
-module CommonMarkerSourceposFix
+module CommonMarkerFixedSourcepos
   class TestMaliciousness < Minitest::Test
     def setup
-      @doc = CommonMarkerSourceposFix.render_doc('Hi *there*')
+      @doc = CommonMarkerFixedSourcepos.render_doc('Hi *there*')
     end
 
     def test_init_with_bad_type
@@ -32,85 +32,85 @@ module CommonMarkerSourceposFix
 
     def test_rendering_with_bad_type
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_html("foo \n baz", 123)
+        CommonMarkerFixedSourcepos.render_html("foo \n baz", 123)
       end
 
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_html("foo \n baz", :totes_fake)
+        CommonMarkerFixedSourcepos.render_html("foo \n baz", :totes_fake)
       end
 
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_html("foo \n baz", [])
+        CommonMarkerFixedSourcepos.render_html("foo \n baz", [])
       end
 
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_html("foo \n baz", [23])
+        CommonMarkerFixedSourcepos.render_html("foo \n baz", [23])
       end
 
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_html("foo \n baz", nil)
+        CommonMarkerFixedSourcepos.render_html("foo \n baz", nil)
       end
 
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_html("foo \n baz", [:SMART, 'totes_fake'])
+        CommonMarkerFixedSourcepos.render_html("foo \n baz", [:SMART, 'totes_fake'])
       end
 
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_html(123)
+        CommonMarkerFixedSourcepos.render_html(123)
       end
 
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_html([123])
+        CommonMarkerFixedSourcepos.render_html([123])
       end
 
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_html(nil)
+        CommonMarkerFixedSourcepos.render_html(nil)
       end
 
       err = assert_raises TypeError do
-        CommonMarkerSourceposFix.render_html("foo \n baz", [:SMART])
+        CommonMarkerFixedSourcepos.render_html("foo \n baz", [:SMART])
       end
-      assert_equal err.message, 'option \':SMART\' does not exist for CommonMarkerSourceposFix::Config::Render'
+      assert_equal err.message, 'option \':SMART\' does not exist for CommonMarkerFixedSourcepos::Config::Render'
 
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_doc("foo \n baz", 123)
+        CommonMarkerFixedSourcepos.render_doc("foo \n baz", 123)
       end
 
       err = assert_raises TypeError do
-        CommonMarkerSourceposFix.render_doc("foo \n baz", :safe)
+        CommonMarkerFixedSourcepos.render_doc("foo \n baz", :safe)
       end
-      assert_equal err.message, 'option \':safe\' does not exist for CommonMarkerSourceposFix::Config::Parse'
+      assert_equal err.message, 'option \':safe\' does not exist for CommonMarkerFixedSourcepos::Config::Parse'
 
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_doc("foo \n baz", :totes_fake)
-      end
-
-      assert_raises TypeError do
-        CommonMarkerSourceposFix.render_doc("foo \n baz", [])
+        CommonMarkerFixedSourcepos.render_doc("foo \n baz", :totes_fake)
       end
 
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_doc("foo \n baz", [23])
+        CommonMarkerFixedSourcepos.render_doc("foo \n baz", [])
       end
 
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_doc("foo \n baz", nil)
+        CommonMarkerFixedSourcepos.render_doc("foo \n baz", [23])
       end
 
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_doc("foo \n baz", [:SMART, 'totes_fake'])
+        CommonMarkerFixedSourcepos.render_doc("foo \n baz", nil)
       end
 
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_doc(123)
+        CommonMarkerFixedSourcepos.render_doc("foo \n baz", [:SMART, 'totes_fake'])
       end
 
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_doc([123])
+        CommonMarkerFixedSourcepos.render_doc(123)
       end
 
       assert_raises TypeError do
-        CommonMarkerSourceposFix.render_doc(nil)
+        CommonMarkerFixedSourcepos.render_doc([123])
+      end
+
+      assert_raises TypeError do
+        CommonMarkerFixedSourcepos.render_doc(nil)
       end
     end
 
@@ -157,7 +157,7 @@ module CommonMarkerSourceposFix
         @doc.url = '123'
       end
 
-      link = CommonMarkerSourceposFix.render_doc('[GitHub](https://www.github.com)').first_child.first_child
+      link = CommonMarkerFixedSourcepos.render_doc('[GitHub](https://www.github.com)').first_child.first_child
       assert_raises TypeError do
         link.url = 123
       end
@@ -174,7 +174,7 @@ module CommonMarkerSourceposFix
         @doc.title = '123'
       end
 
-      image = CommonMarkerSourceposFix.render_doc('![alt text](https://github.com/favicon.ico "Favicon")')
+      image = CommonMarkerFixedSourcepos.render_doc('![alt text](https://github.com/favicon.ico "Favicon")')
       image = image.first_child.first_child
       assert_raises TypeError do
         image.title = 123
@@ -192,7 +192,7 @@ module CommonMarkerSourceposFix
         @doc.header_level = 1
       end
 
-      header = CommonMarkerSourceposFix.render_doc('### Header Three').first_child
+      header = CommonMarkerFixedSourcepos.render_doc('### Header Three').first_child
       assert_raises TypeError do
         header.header_level = '123'
       end
@@ -209,7 +209,7 @@ module CommonMarkerSourceposFix
         @doc.list_type = :bullet_list
       end
 
-      ul_list = CommonMarkerSourceposFix.render_doc("* Bullet\n*Bullet").first_child
+      ul_list = CommonMarkerFixedSourcepos.render_doc("* Bullet\n*Bullet").first_child
       assert_raises NodeError do
         ul_list.list_type = :fake
       end
@@ -229,7 +229,7 @@ module CommonMarkerSourceposFix
         @doc.list_start = 12
       end
 
-      ol_list = CommonMarkerSourceposFix.render_doc("1. One\n2. Two").first_child
+      ol_list = CommonMarkerFixedSourcepos.render_doc("1. One\n2. Two").first_child
       assert_raises TypeError do
         ol_list.list_start = :fake
       end
@@ -258,7 +258,7 @@ module CommonMarkerSourceposFix
         @doc.fence_info = 'ruby'
       end
 
-      fence = CommonMarkerSourceposFix.render_doc("``` ruby\nputs 'wow'\n```").first_child
+      fence = CommonMarkerFixedSourcepos.render_doc("``` ruby\nputs 'wow'\n```").first_child
       assert_raises TypeError do
         fence.fence_info = 123
       end

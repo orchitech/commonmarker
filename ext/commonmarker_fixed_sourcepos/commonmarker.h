@@ -11,6 +11,6 @@
 
 #define CSTR2SYM(s) (ID2SYM(rb_intern((s))))
 
-void Init_commonmarker();
+void Init_commonmarker_fixed_sourcepos();
 
 #endif

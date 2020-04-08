@@ -2,7 +2,7 @@
 
 require 'pp'
 
-module CommonMarkerSourceposFix
+module CommonMarkerFixedSourcepos
   class Node
     module Inspect
       PP_INDENT_SIZE = 2
