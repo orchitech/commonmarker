@@ -2,10 +2,10 @@
 
 require 'test_helper'
 
-module CommonMarker
+module CommonMarkerSourceposFix
   class TestMaliciousness < Minitest::Test
     def setup
-      @doc = CommonMarker.render_doc('Hi *there*')
+      @doc = CommonMarkerSourceposFix.render_doc('Hi *there*')
     end
 
     def test_init_with_bad_type
@@ -32,85 +32,85 @@ module CommonMarker
 
     def test_rendering_with_bad_type
       assert_raises TypeError do
-        CommonMarker.render_html("foo \n baz", 123)
+        CommonMarkerSourceposFix.render_html("foo \n baz", 123)
       end
 
       assert_raises TypeError do
-        CommonMarker.render_html("foo \n baz", :totes_fake)
+        CommonMarkerSourceposFix.render_html("foo \n baz", :totes_fake)
       end
 
       assert_raises TypeError do
-        CommonMarker.render_html("foo \n baz", [])
+        CommonMarkerSourceposFix.render_html("foo \n baz", [])
       end
 
       assert_raises TypeError do
-        CommonMarker.render_html("foo \n baz", [23])
+        CommonMarkerSourceposFix.render_html("foo \n baz", [23])
       end
 
       assert_raises TypeError do
-        CommonMarker.render_html("foo \n baz", nil)
+        CommonMarkerSourceposFix.render_html("foo \n baz", nil)
       end
 
       assert_raises TypeError do
-        CommonMarker.render_html("foo \n baz", [:SMART, 'totes_fake'])
+        CommonMarkerSourceposFix.render_html("foo \n baz", [:SMART, 'totes_fake'])
       end
 
       assert_raises TypeError do
-        CommonMarker.render_html(123)
+        CommonMarkerSourceposFix.render_html(123)
       end
 
       assert_raises TypeError do
-        CommonMarker.render_html([123])
+        CommonMarkerSourceposFix.render_html([123])
       end
 
       assert_raises TypeError do
-        CommonMarker.render_html(nil)
+        CommonMarkerSourceposFix.render_html(nil)
       end
 
       err = assert_raises TypeError do
-        CommonMarker.render_html("foo \n baz", [:SMART])
+        CommonMarkerSourceposFix.render_html("foo \n baz", [:SMART])
       end
-      assert_equal err.message, 'option \':SMART\' does not exist for CommonMarker::Config::Render'
+      assert_equal err.message, 'option \':SMART\' does not exist for CommonMarkerSourceposFix::Config::Render'
 
       assert_raises TypeError do
-        CommonMarker.render_doc("foo \n baz", 123)
+        CommonMarkerSourceposFix.render_doc("foo \n baz", 123)
       end
 
       err = assert_raises TypeError do
-        CommonMarker.render_doc("foo \n baz", :safe)
+        CommonMarkerSourceposFix.render_doc("foo \n baz", :safe)
       end
-      assert_equal err.message, 'option \':safe\' does not exist for CommonMarker::Config::Parse'
+      assert_equal err.message, 'option \':safe\' does not exist for CommonMarkerSourceposFix::Config::Parse'
 
       assert_raises TypeError do
-        CommonMarker.render_doc("foo \n baz", :totes_fake)
-      end
-
-      assert_raises TypeError do
-        CommonMarker.render_doc("foo \n baz", [])
+        CommonMarkerSourceposFix.render_doc("foo \n baz", :totes_fake)
       end
 
       assert_raises TypeError do
-        CommonMarker.render_doc("foo \n baz", [23])
+        CommonMarkerSourceposFix.render_doc("foo \n baz", [])
       end
 
       assert_raises TypeError do
-        CommonMarker.render_doc("foo \n baz", nil)
+        CommonMarkerSourceposFix.render_doc("foo \n baz", [23])
       end
 
       assert_raises TypeError do
-        CommonMarker.render_doc("foo \n baz", [:SMART, 'totes_fake'])
+        CommonMarkerSourceposFix.render_doc("foo \n baz", nil)
       end
 
       assert_raises TypeError do
-        CommonMarker.render_doc(123)
+        CommonMarkerSourceposFix.render_doc("foo \n baz", [:SMART, 'totes_fake'])
       end
 
       assert_raises TypeError do
-        CommonMarker.render_doc([123])
+        CommonMarkerSourceposFix.render_doc(123)
       end
 
       assert_raises TypeError do
-        CommonMarker.render_doc(nil)
+        CommonMarkerSourceposFix.render_doc([123])
+      end
+
+      assert_raises TypeError do
+        CommonMarkerSourceposFix.render_doc(nil)
       end
     end
 
@@ -157,7 +157,7 @@ module CommonMarker
         @doc.url = '123'
       end
 
-      link = CommonMarker.render_doc('[GitHub](https://www.github.com)').first_child.first_child
+      link = CommonMarkerSourceposFix.render_doc('[GitHub](https://www.github.com)').first_child.first_child
       assert_raises TypeError do
         link.url = 123
       end
@@ -174,7 +174,7 @@ module CommonMarker
         @doc.title = '123'
       end
 
-      image = CommonMarker.render_doc('![alt text](https://github.com/favicon.ico "Favicon")')
+      image = CommonMarkerSourceposFix.render_doc('![alt text](https://github.com/favicon.ico "Favicon")')
       image = image.first_child.first_child
       assert_raises TypeError do
         image.title = 123
@@ -192,7 +192,7 @@ module CommonMarker
         @doc.header_level = 1
       end
 
-      header = CommonMarker.render_doc('### Header Three').first_child
+      header = CommonMarkerSourceposFix.render_doc('### Header Three').first_child
       assert_raises TypeError do
         header.header_level = '123'
       end
@@ -209,7 +209,7 @@ module CommonMarker
         @doc.list_type = :bullet_list
       end
 
-      ul_list = CommonMarker.render_doc("* Bullet\n*Bullet").first_child
+      ul_list = CommonMarkerSourceposFix.render_doc("* Bullet\n*Bullet").first_child
       assert_raises NodeError do
         ul_list.list_type = :fake
       end
@@ -229,7 +229,7 @@ module CommonMarker
         @doc.list_start = 12
       end
 
-      ol_list = CommonMarker.render_doc("1. One\n2. Two").first_child
+      ol_list = CommonMarkerSourceposFix.render_doc("1. One\n2. Two").first_child
       assert_raises TypeError do
         ol_list.list_start = :fake
       end
@@ -258,7 +258,7 @@ module CommonMarker
         @doc.fence_info = 'ruby'
       end
 
-      fence = CommonMarker.render_doc("``` ruby\nputs 'wow'\n```").first_child
+      fence = CommonMarkerSourceposFix.render_doc("``` ruby\nputs 'wow'\n```").first_child
       assert_raises TypeError do
         fence.fence_info = 123
       end

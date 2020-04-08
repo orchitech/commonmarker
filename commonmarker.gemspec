@@ -2,15 +2,15 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'commonmarker/version'
+require 'commonmarker-sourcepos-fix/version'
 
 Gem::Specification.new do |s|
-  s.name = 'commonmarker'
-  s.version = CommonMarker::VERSION
+  s.name = 'commonmarker-sourcepos-fix'
+  s.version = CommonMarkerSourceposFix::VERSION
   s.summary = 'CommonMark parser and renderer. Written in C, wrapped in Ruby.'
-  s.description = 'A fast, safe, extensible parser for CommonMark. This wraps the official libcmark library.'
+  s.description = 'A fast, safe, extensible parser for CommonMark. This wraps the cmark-gfm library and adds sourcepos fixes.'
   s.authors = ['Garen Torikian', 'Ashe Connor']
-  s.homepage = 'https://github.com/orchitech/commonmarker'
+  s.homepage = 'https://github.com/orchitech/commonmarker/tree/fix-source-positions-for-inlines'
   s.license = 'MIT'
 
   s.files         = %w[LICENSE.txt README.md Rakefile commonmarker.gemspec bin/commonmarker]

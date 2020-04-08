@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'commonmarker'
+require 'commonmarker-sourcepos-fix'
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'minitest/focus'
 
-include CommonMarker # rubocop:disable Style/MixinUsage
+include CommonMarkerSourceposFix # rubocop:disable Style/MixinUsage
 
 FIXTURES_DIR = File.join(File.dirname(__FILE__), 'fixtures')
 

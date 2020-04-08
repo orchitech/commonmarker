@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'commonmarker/node/inspect'
+require 'commonmarker-sourcepos-fix/node/inspect'
 
-module CommonMarker
+module CommonMarkerSourceposFix
   class Node
     include Enumerable
     include Inspect

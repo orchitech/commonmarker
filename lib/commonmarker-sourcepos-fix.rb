@@ -1,17 +1,17 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require 'commonmarker/commonmarker'
-require 'commonmarker/config'
-require 'commonmarker/node'
-require 'commonmarker/renderer'
-require 'commonmarker/renderer/html_renderer'
-require 'commonmarker/version'
+require 'commonmarker-sourcepos-fix/commonmarker'
+require 'commonmarker-sourcepos-fix/config'
+require 'commonmarker-sourcepos-fix/node'
+require 'commonmarker-sourcepos-fix/renderer'
+require 'commonmarker-sourcepos-fix/renderer/html_renderer'
+require 'commonmarker-sourcepos-fix/version'
 
 begin
   require 'awesome_print'
 rescue LoadError; end # rubocop:disable Lint/SuppressedException
-module CommonMarker
+module CommonMarkerSourceposFix
   # Public:  Parses a Markdown string into an HTML string.
   #
   # text - A {String} of text

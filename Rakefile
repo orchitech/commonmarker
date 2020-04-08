@@ -15,7 +15,7 @@ gem_spec = Gem::Specification.load('commonmarker.gemspec')
 
 # Ruby Extension
 Rake::ExtensionTask.new('commonmarker', gem_spec) do |ext|
-  ext.lib_dir = File.join('lib', 'commonmarker')
+  ext.lib_dir = File.join('lib', 'commonmarker-sourcepos-fix')
 end
 
 # Packaging

@@ -1202,7 +1202,7 @@ __attribute__((visibility("default"))) void Init_commonmarker() {
   sym_right = ID2SYM(rb_intern("right"));
   sym_center = ID2SYM(rb_intern("center"));
 
-  module = rb_define_module("CommonMarker");
+  module = rb_define_module("CommonMarkerSourceposFix");
   rb_define_singleton_method(module, "extensions", rb_extensions, 0);
   rb_eNodeError = rb_define_class_under(module, "NodeError", rb_eStandardError);
   rb_cNode = rb_define_class_under(module, "Node", rb_cObject);
