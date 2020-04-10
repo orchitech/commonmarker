@@ -1,5 +1,5 @@
 [submodule "ext/commonmarker/cmark-upstream"]
 	path = ext/commonmarker_fixed_sourcepos/cmark-upstream
 	url = https://github.com/orchitech/cmark-gfm.git
-	branch = fix-source-positions-for-inlines
+	branch = fix-sourcepos
 	ignore = dirty

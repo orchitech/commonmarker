@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.summary = 'CommonMark parser and renderer. Written in C, wrapped in Ruby.'
   s.description = 'A fast, safe, extensible parser for CommonMark. This wraps the cmark-gfm library and adds sourcepos fixes.'
   s.authors = ['Garen Torikian', 'Ashe Connor']
-  s.homepage = 'https://github.com/orchitech/commonmarker/tree/fix-source-positions-for-inlines'
+  s.homepage = 'https://github.com/orchitech/commonmarker/tree/fix-sourcepos'
   s.license = 'MIT'
 
   s.files         = %w[LICENSE.txt README.md Rakefile commonmarker.gemspec bin/commonmarker_fixed_sourcepos]
